@@ -1,0 +1,170 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+html,body{
+  width: 100%;
+  height: 100%;
+}
+.lt_layout{
+  width: 100%;
+  height: 100%;
+  max-width: 640px;
+  background-color: #fff;
+  margin:0 auto;
+  position: relative;
+}
+
+.lt_header{
+  width: 100%;
+  height: 45px;
+  max-width: 640px;
+  background-color: #1a70a6;
+  position: absolute;
+  left: 0;
+  top:0;
+  .lt_topLeft,.lt_top_right{
+    width: 45px;
+    line-height: 45px;
+    position: absolute;
+    top:0px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+  }
+  .lt_topLeft{
+    left: 0px;
+  }
+  .lt_top_right{
+    right: 0px;
+  }
+  .lt_top_text{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding:0px 45px;
+    text-align: center;
+    line-height: 45px;
+    color: #fff;
+    font-size: 16px;
+    margin: 0;
+    > input {
+      height: 30px;
+    }
+  }
+}
+
+.lt_main{
+  width: 100%;
+  height: 100%;
+  padding:45px 0;
+  box-sizing: border-box;
+  /*下面这个容器的添加有作用就是：用来限制区域滚动的高度*/
+  .lt_parent{
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    .lt_nav{
+      width: 100%;
+      padding: 10px;
+      > a{
+        width: 33.33%;
+        display: block;
+        float: left;
+        > img{
+          width: 100%;
+          display: block;
+        }
+      }
+    }
+
+    .lt_product{
+      padding: 10px;
+      width: 100%;
+      > ul{
+        list-style: none;
+        > li {
+          float: left;
+          width: 48%;
+          margin-top: 10px;
+          box-shadow: 0px 0px 2px #ccc;
+          > a{
+            width: 100%;
+            display: block;
+            text-align: center;
+            button{
+              display: block;
+              margin:0 auto;
+            }
+            > p {
+              margin-bottom:0;
+            }
+            > .now_price{
+              color: #e92322;
+              font-size: 14px;
+              line-height: 35px;
+            }
+            > .old_price{
+              color: #ccc;
+              font-size: 12px;
+              line-height: 35px;
+            }
+            > img{
+              width: 100%;
+              display: block;
+            }
+          }
+        }
+        > li:nth-of-type(even){
+          margin-left:4%;
+        }
+      }
+    }
+  }
+}
+
+
+.lt_footer{
+  width: 100%;
+  max-width: 640px;
+  height: 45px;
+  position: absolute;
+  background-color: #1a70a6;
+  left: 0;
+  bottom: 0;
+  > ul{
+    list-style: none;
+    width: 100%;
+    display: flex;
+    > li {
+      // width: 25%;
+      flex: 1;
+      // float: left;
+      padding-top: 3px;
+      box-sizing: border-box;
+      > a{
+        // width: 100%;
+        flex: 1;
+        display: block;
+        text-align: center;
+        color: #fff;
+        text-decoration: none;
+        > p{
+          margin-bottom:0;
+          color: #fff;
+        }
+      }
+      &.now{
+        > a{
+          color: orange;
+          > p{
+            color: orange;
+          }
+        }
+      }
+    }
+  }
+}
