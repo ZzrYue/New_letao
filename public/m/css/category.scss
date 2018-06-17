@@ -41,6 +41,11 @@
             list-style: none;
             display: flex;
             flex-wrap: wrap;
+            > span{
+                font-size: 13px;
+                line-height: 50px;
+                padding-left: 15px;
+            }
             > li {
                 width: 33.33%;
                 text-align: center;

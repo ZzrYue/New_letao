@@ -46,6 +46,12 @@
   flex-wrap: wrap;
 }
 
+.lt_main > .lt_cright ul > span {
+  font-size: 13px;
+  line-height: 50px;
+  padding-left: 15px;
+}
+
 .lt_main > .lt_cright ul > li {
   width: 33.33%;
   text-align: center;
