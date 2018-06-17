@@ -43,6 +43,15 @@ html,body{
             width: 100%;
             height: 100%;
             padding: 0px 45px;
+            > form{
+                // padding-top: 6px;
+                margin-top: -3px;
+                > input{
+                    height: 30px;
+                    margin-bottom: 0;
+                    color: #666;
+                }
+            }
         }
         > .lt_hright{
             right: 0;
@@ -58,18 +67,6 @@ html,body{
             width: 100%;
             height: 100%;
             position: relative;
-            .lt_mnav{
-                padding: 10px;
-                display: flex;
-                flex-wrap: wrap;
-                > a {
-                    width: 33.33%;
-                    > img{
-                        width: 100%;
-                        display: block;
-                    }
-                }
-            }
             .lt_mproduct{
                 padding: 10px;
                 ul {
