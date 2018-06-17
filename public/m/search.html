@@ -12,7 +12,7 @@
     <!-- 公共样式文件 -->
     <link rel="stylesheet" href="./css/common.css">
     <!-- 当前页样式文件 -->
-    <link rel="stylesheet" href="./css/category.css">
+    <link rel="stylesheet" href="./css/search.css">
     <title>Document</title>
 </head>
 
@@ -21,30 +21,27 @@
         <div class="lt_header">
             <span class="lt_hleft fa fa-arrow-left"></span>
             <div class="lt_hcenter">
-                <form action="">
-                    <input type="text" name="" id="">
-                </form>
+                搜索中心
             </div>
-            <a href="./search.html" class="lt_hright fa fa-search"></a>
+            <span class="lt_hright"></span>
         </div>
         <div class="lt_main">
-            <div class="lt_clef">
-                <div class="mui-scroll-wrapper">
-                    <div class="mui-scroll">
-                       <ul>
-
-                       </ul>
-                    </div>
-                </div>
+            <div class="lt_searchBox">
+                <form action="">
+                    <input type="text">
+                    <span>搜索</span>
+                </form>
             </div>
-            <div class="lt_cright">
-                <div class="mui-scroll-wrapper">
-                    <div class="mui-scroll">
-                        <ul>
-
-                        </ul>
-                    </div>
+            <div class="lt_searchList">
+                <div class="lt_stitle">
+                    <span>搜索历史</span>
+                    <a href="javascript:;">
+                        <span class="fa fa-trash">清空记录</span>
+                    </a>
                 </div>
+                <ul class="lt_slist">
+                    
+                </ul>
             </div>
         </div>
         <div class="lt_footer">
@@ -55,7 +52,7 @@
                         <p>首页</p>
                     </a>
                 </li>
-                <li class="active">
+                <li class="">
                     <a href="./category.html">
                         <span class="fa fa-bars"></span>
                         <p>分类</p>
@@ -76,35 +73,19 @@
             </ul>
         </div>
     </div>
-    <!-- 一级分类数据模板 -->
-    <script type="text/template" id="firstCategoryTemp">
-        <% for(var i=0;i< rows.length;i++){ %>
-            <li class="<%=i==0?'active':''%>">
-                <a href="javascript:;" data-id="<%=rows[i].id%>"><%=rows[i].categoryName%></a>
+    <script type="text/template" id="ltHistoryTemp">
+        <% for(var i =0; i <items.length;i++){ %>
+            <li>
+                <span><%=items[i]%></span>
+                <span class="fa fa-close" data-index = "<%=i%>"></span>
             </li>
         <% }%>
-    </script>
-    <!-- 二级分类数据模板 -->
-    <script type="text/template" id="secondCategoryTemp">
-        <% if(total == 0){ %>
-            <span>没有任何的二级分类数据</span>
-        <%} else{ %>
-            <% for(var i=0;i< rows.length;i++){ %>
-                <li>
-                    <a href="javascript:;">
-                        <img src="<%= rows[i].brandLogo%>" alt="">
-                        <p><%= rows[i].brandName%></p>
-                    </a>
-                </li>
-            <% }%>
-        <%}%>
     </script>
     <script src="./assets/mui/js/mui.js"></script>
     <!-- 移动端的jq -->
     <script src="./assets/zepto/zepto.min.js"></script>
     <script src="./assets/artTemplate/template-native.js"></script>
-    <script src="./js/common.js"></script>
-    <script src="./js/category.js"></script>
+    <script src="./js/search.js"></script>
 </body>
 
 </html>

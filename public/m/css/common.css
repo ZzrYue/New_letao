@@ -38,6 +38,7 @@ html, body {
   position: absolute;
   top: 0;
   line-height: 45px;
+  color: #fff;
 }
 
 .layout .lt_header .lt_hleft {
