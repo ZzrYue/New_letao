@@ -1,4 +1,10 @@
 $(function(){
+    
+    // 获取参数
+    var pa = lt.getParamter(location.search);
+    var pageIndex = 1; //当前页码
+    var pageSize = 2; //当前显示的记录数
+
     // 1.下拉刷新和上拉加载初始化
     mui.init({
         pullRefresh : {
@@ -24,16 +30,34 @@ $(function(){
             contentrefresh : "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
             contentnomore:'没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
             callback :function(){
-                setTimeout(function(){
-                    mui('#refreshContainer').pullRefresh().endPullupToRefresh(true);
-                }, 2000);
+                $.ajax({
+                    type:'get',
+                    url:'/product/queryProduct',
+                    "data":{
+                        page:++pageIndex,
+                        pageSize:pageSize,
+                        // 用户之前的搜索关键字
+                        proName:pa.proName
+                    },
+                    dataType:"json",
+                    success:function(result){
+                        // console.log(result);
+                        if(result.data.length > 0 ){
+                            setTimeout(function(){
+                                var html = template("lt_sTemp",result);
+                                $(".lt_mproduct > ul").append(html);
+                                mui('#refreshContainer').pullRefresh().endPullupToRefresh();
+                            },1000);
+                        }else{
+                            mui('#refreshContainer').pullRefresh().endPullupToRefresh(true);
+                        }
+                    }
+                });
             } //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
           }
         }
     });
 
-    // 获取参数
-    var pa = lt.getParamter(location.search);
 
     // 2.页面打开时自动加载数据生成动态结构
     function render(data){
@@ -53,8 +77,8 @@ $(function(){
     }
     // 加载默认数据
     render({
-        page:1,
-        pageSize:10,
+        page:pageIndex,
+        pageSize:pageSize,
         // 用户之前的搜索关键字
         proName:pa.proName
     });
@@ -62,8 +86,8 @@ $(function(){
     // 3.单击实现排序
     $(".lt_sorder > a").on("tap",function(){
         var data = {
-            page:1,
-            pageSize:10,
+            page:pageIndex,
+            pageSize:pageSize,
             // 用户之前的搜索关键字
             proName:pa.proName
         };
