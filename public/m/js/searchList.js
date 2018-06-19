@@ -32,17 +32,12 @@ $(function(){
         }
     });
 
+    // 获取参数
+    var pa = lt.getParamter(location.search);
+
     // 2.页面打开时自动加载数据生成动态结构
-    function render(){
-        var pa = lt.getParamter(location.search);
+    function render(data){
         // alert(location.search);
-        // 准备参数
-        var data = {
-            page:1,
-            pageSize:10,
-            // 用户之前的搜索关键字
-            proName:pa.proName
-        };
         // 发起ajax请求
         $.ajax({
             type:'get',
@@ -57,10 +52,51 @@ $(function(){
         });
     }
     // 加载默认数据
-    render();
+    render({
+        page:1,
+        pageSize:10,
+        // 用户之前的搜索关键字
+        proName:pa.proName
+    });
 
     // 3.单击实现排序
     $(".lt_sorder > a").on("tap",function(){
+        var data = {
+            page:1,
+            pageSize:10,
+            // 用户之前的搜索关键字
+            proName:pa.proName
+        };
         // 目的只有一个：就是在之前的查询的基础之上添加一个排序参数
+        // data[price|num] = 1|2;
+        // 需求：
+        // 1.到底以谁进行排序：在单击某个a的时候能够获取到这个a标签所代表的排序字段:为a元素添加自定义属性，这个值就是参数的键值
+        // 2.到底是升序还是降序 a.拥有acitve样式 b.通过箭头的方向判断是升序还是降序：判断span的样式名称 fa-angle-down:降序  fa-angle-up:升序
+
+        // 1.单击时，判断当前a元素是否有active样式
+        // 如果有：则进行span的样式的切换：箭头方向切换
+        // 如果没有：则先移除之前拥有active样式的A标签的active样式 ，同时将之前可能修改箭头方向重置为向下，最后为当前a元素添加active样式
+        if($(this).hasClass("active")){ //有active样式
+            // 找到当前被点击的a元素的子元素span，进行样式的切换--就是箭头方向的切换
+            $(this).find("span").toggleClass("fa-angle-down fa-angle-up");
+        }else{ //没有active样式
+            // 找到兄弟元素中拥有active样式的a元素，找到它的子元素span,将span的样式重置箭头方向向下
+            if(!$(this).siblings(".active")){
+                $(this).siblings(".active").find("span")[0].className="fa fa-angle-down";
+            }
+            // 清除所有兄弟元素的active样式
+            $(this).siblings().removeClass("active");
+            // 为当前被点击的a元素添加active样式
+            $(this).addClass("active");
+        }
+
+        // 获取排序字段
+        var key = $(this).data("order");
+        // 获取排序方式--升序还是降序
+        var orderType = $(this).find("span").hasClass("fa-angle-down")?2:1;
+        // 将排序参数添加到原始参数中
+        data[key] = orderType;
+        // 重新加载数据
+        render(data);
     })
 });

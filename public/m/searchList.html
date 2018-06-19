@@ -37,16 +37,16 @@
                         </div>
                         <!-- 排序结构 -->
                         <div class="lt_sorder">
-                            <a href="javascript:;">上架时间
+                            <a href="javascript:;" data-order="time">上架时间
                                 <span class="fa fa-angle-down"></span>
                             </a>
-                            <a href="javascript:;">价格
+                            <a href="javascript:;" data-order="price">价格
                                 <span class="fa fa-angle-down"></span>
                             </a>
-                            <a href="javascript:;">销量
+                            <a href="javascript:;" data-order="num">销量
                                 <span class="fa fa-angle-down"></span>
                             </a>
-                            <a href="javascript:;">折扣
+                            <a href="javascript:;" data-order="discount">折扣
                                 <span class="fa fa-angle-down"></span>
                             </a>
                         </div>
@@ -100,8 +100,10 @@
                     }%>
                     <img src="<%=data[i].pic[0].picAddr%>" alt="">
                     <p class="mui-ellipsis-2"><%=data[i].proName%></p>
-                    <span>&yen;<%=data[i].price%></span>
-                    <del>&yen;<%=data[i].oldPrice%></del>
+                    <p>
+                        <span>&yen;<%=data[i].price%></span>
+                        <del>&yen;<%=data[i].oldPrice%></del>
+                    </p>
                     <button class="mui-btn-blue">立刻购买</button>
                 </a>
             </li>
