@@ -34,7 +34,6 @@ $(function(){
         // 2.将关键字添加到localStorage中
         // 2.1 获取历史搜索记录
         var hisData = getHistoryData();
-
         // 判断关键字是否重复，如果是，则先删除再添加
         for(var i=0;i<hisData.length;i++){
             if(hisData[i] == keyWords){
@@ -46,16 +45,12 @@ $(function(){
         if(hisData.length >= 10){
             hisData.splice(0,1);
         }
-
-
         // 2.2 将当前关键字添加到数组中
         hisData.push(keyWords);
         // 2.3 将添加了新关键字的数组重新写入到localStorage中
         localStorage.setItem("ltHistoryData",JSON.stringify(hisData));
         // 2.4 刷新页面显示
         loadHistoryData();
-
-
         // 3.实现页面的跳转
         location.href="./searchList.html?proName="+keyWords;
     });

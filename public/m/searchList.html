@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 字体图标样式文件 -->
+    <link rel="stylesheet" href="./assets/fa/css/font-awesome.css">
+    <!-- mui样式文件 -->
+    <link rel="stylesheet" href="./assets/mui/css/mui.css">
+    <!-- 公共样式文件 -->
+    <link rel="stylesheet" href="./css/common.css">
+    <!-- 当前页样式文件 -->
+    <link rel="stylesheet" href="./css/searchList.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="layout">
+        <div class="lt_header">
+            <span class="lt_hleft  fa fa-arrow-left"></span>
+            <div class="lt_hcenter">搜索列表</div>
+            <span class="lt_hright"></span>
+        </div>
+        <div class="lt_main">
+            <!-- 同志们，这个lt_parent的作用就是用来限制mui-scroll-wrapper的高度范围 -->
+            <div class="lt_parent">
+                <div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+                    <div class="mui-scroll" style="background-color: #fff;">
+                        <!-- 搜索框 -->
+                        <div class="lt_searchBox">
+                            <form action="">
+                                <input type="text" class="lt_searchKey">
+                                <span class="lt_searchBtn">搜索</span>
+                            </form>
+                        </div>
+                        <!-- 排序结构 -->
+                        <div class="lt_sorder">
+                            <a href="javascript:;">上架时间
+                                <span class="fa fa-angle-down"></span>
+                            </a>
+                            <a href="javascript:;">价格
+                                <span class="fa fa-angle-down"></span>
+                            </a>
+                            <a href="javascript:;">销量
+                                <span class="fa fa-angle-down"></span>
+                            </a>
+                            <a href="javascript:;">折扣
+                                <span class="fa fa-angle-down"></span>
+                            </a>
+                        </div>
+                        <!-- 搜索列表数据 -->
+                        <div class="lt_mproduct">
+                            <ul>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lt_footer">
+            <ul>
+                <li>
+                    <a href="./letao_index.html">
+                        <span class="fa fa-home"></span>
+                        <p>首页</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="./category.html">
+                        <span class="fa fa-bars"></span>
+                        <p>分类</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <span class="fa fa-shopping-cart"></span>
+                        <p>购物车</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <span class="fa fa-user"></span>
+                        <p>个人中心</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- 为了避免没有图片所产生的错误，我们可以判断当前数据中是否有图片，如果没有，则添加默认路径的图片 -->
+    <script type="text/template" id="lt_sTemp">
+        <%for(var i=0;i < data.length;i++){%>
+            <li>
+                <a href="./productDetail.html?proId=<%=data[i].id%>">
+                    <%if(data[i].pic.length == 0){
+                        data[i].pic.push({"picAddr":"/mobile/images/none.jpg"});
+                    }%>
+                    <img src="<%=data[i].pic[0].picAddr%>" alt="">
+                    <p class="mui-ellipsis-2"><%=data[i].proName%></p>
+                    <span>&yen;<%=data[i].price%></span>
+                    <del>&yen;<%=data[i].oldPrice%></del>
+                    <button class="mui-btn-blue">立刻购买</button>
+                </a>
+            </li>
+        <%}%>
+    </script>
+    <script src="./assets/mui/js/mui.js"></script>
+    <script src="./assets/zepto/zepto.min.js"></script>
+    <script src="./assets/artTemplate/template-native.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/searchList.js"></script>
+</body>
+
+</html>

@@ -60,7 +60,7 @@
   border-bottom: 1px dashed #ccc;
 }
 
-.lt_main .lt_searchList .lt_slist > li > span {
+.lt_main .lt_searchList .lt_slist > li span {
   line-height: 30px;
 }
 

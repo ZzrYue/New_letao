@@ -79,7 +79,7 @@
         <%}else{%>
             <% for(var i=list.length -1;i>=0;i--){ %>
                 <li>
-                    <span><%=list[i]%></span>
+                    <a href="./searchList.html?proName=<%=list[i]%>"><%=list[i]%></a>
                     <span class="fa fa-close" data-index="<%=i%>"></span>
                 </li>
             <%}%>
