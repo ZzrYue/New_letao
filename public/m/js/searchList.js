@@ -1,5 +1,5 @@
-$(function(){
-    
+$(function () {
+
     // 获取参数
     var pa = lt.getParamter(location.search);
     var pageIndex = 1; //当前页码
@@ -7,89 +7,94 @@ $(function(){
 
     // 1.下拉刷新和上拉加载初始化
     mui.init({
-        pullRefresh : {
-          container:"#refreshContainer",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
-          down : { //down:下拉
-            height:50,//可选,默认50.触发下拉刷新拖动距离,
-            auto: false,//可选,默认false.首次加载自动下拉刷新一次
-            contentdown : "下拉可以刷新",//可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
-            contentover : "释放立即刷新",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
-            contentrefresh : "正在刷新...",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
-            callback :function(){
-                // 调用ajax，获取数据，重新生成动态结构
-                // 上面的操作做完之后，重新隐藏下拉刷新组件
-                setTimeout(function(){
-                    // 对于下拉刷新结束，文档有错误，正确的方法是endPulldownToRefresh()
-                    mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
-                }, 2000);
-            } //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
-          },
-          up : {
-            height:50,//可选.默认50.触发上拉加载拖动距离
-            auto:false,//可选,默认false.自动上拉加载一次
-            contentrefresh : "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
-            contentnomore:'没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
-            callback :function(){
-                $.ajax({
-                    type:'get',
-                    url:'/product/queryProduct',
-                    "data":{
-                        page:++pageIndex,
-                        pageSize:pageSize,
-                        // 用户之前的搜索关键字
-                        proName:pa.proName
-                    },
-                    dataType:"json",
-                    success:function(result){
-                        // console.log(result);
-                        if(result.data.length > 0 ){
-                            setTimeout(function(){
-                                var html = template("lt_sTemp",result);
-                                $(".lt_mproduct > ul").append(html);
-                                mui('#refreshContainer').pullRefresh().endPullupToRefresh();
-                            },1000);
-                        }else{
-                            mui('#refreshContainer').pullRefresh().endPullupToRefresh(true);
+        pullRefresh: {
+            container: "#refreshContainer",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+            down: { //down:下拉
+                height: 50,//可选,默认50.触发下拉刷新拖动距离,
+                auto: false,//可选,默认false.首次加载自动下拉刷新一次
+                contentdown: "下拉可以刷新",//可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+                contentover: "释放立即刷新",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+                contentrefresh: "正在刷新...",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+                callback: function () {
+                    // 调用ajax，获取数据，重新生成动态结构
+                    // 上面的操作做完之后，重新隐藏下拉刷新组件
+                    setTimeout(function () {
+                        // 对于下拉刷新结束，文档有错误，正确的方法是endPulldownToRefresh()
+                        mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
+                    }, 2000);
+                } //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+            },
+            up: {
+                height: 50,//可选.默认50.触发上拉加载拖动距离
+                auto: false,//可选,默认false.自动上拉加载一次
+                contentrefresh: "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
+                contentnomore: '没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
+                callback: function () {
+                    $.ajax({
+                        type: 'get',
+                        url: '/product/queryProduct',
+                        "data": {
+                            page: ++pageIndex,
+                            pageSize: pageSize,
+                            // 用户之前的搜索关键字
+                            proName: pa.proName
+                        },
+                        dataType: "json",
+                        success: function (result) {
+                            // console.log(result);
+                            if (result.data.length > 0) {
+                                setTimeout(function () {
+                                    var html = template("lt_sTemp", result);
+                                    $(".lt_mproduct > ul").append(html);
+                                    mui('#refreshContainer').pullRefresh().endPullupToRefresh();
+                                }, 1000);
+                            } else {
+                                mui('#refreshContainer').pullRefresh().endPullupToRefresh(true);
+                            }
                         }
-                    }
-                });
-            } //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
-          }
+                    });
+                } //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+            }
         }
     });
 
 
     // 2.页面打开时自动加载数据生成动态结构
-    function render(data){
+    function render(data) {
         // alert(location.search);
         // 发起ajax请求
         $.ajax({
-            type:'get',
-            url:'/product/queryProduct',
-            "data":data,
-            dataType:"json",
-            success:function(result){
+            type: 'get',
+            url: '/product/queryProduct',
+            // $.extend:如果传入的参数属性名称一致，就进行覆盖，否则就进行累加
+            "data": $.extend({
+                page: pageIndex,
+                pageSize: pageSize,
+                // 用户之前的搜索关键字
+                proName: pa.proName
+            }, data),
+            dataType: "json",
+            success: function (result) {
                 // console.log(result);
-                var html = template("lt_sTemp",result);
+                var html = template("lt_sTemp", result);
                 $(".lt_mproduct > ul").html(html);
             }
         });
     }
     // 加载默认数据
-    render({
-        page:pageIndex,
-        pageSize:pageSize,
-        // 用户之前的搜索关键字
-        proName:pa.proName
-    });
+    render();
 
     // 3.单击实现排序
-    $(".lt_sorder > a").on("tap",function(){
+    $(".lt_sorder > a").on("tap", function () {
+        // 重置页码
+        pageIndex = 1;
+        // 重置上拉加载
+        mui('#refreshContainer').pullRefresh().refresh(true);
         var data = {
-            page:pageIndex,
-            pageSize:pageSize,
-            // 用户之前的搜索关键字
-            proName:pa.proName
+            // page:pageIndex,
+            // pageSize:pageSize,
+            // // 用户之前的搜索关键字
+            // proName:pa.proName
         };
         // 目的只有一个：就是在之前的查询的基础之上添加一个排序参数
         // data[price|num] = 1|2;
@@ -100,14 +105,21 @@ $(function(){
         // 1.单击时，判断当前a元素是否有active样式
         // 如果有：则进行span的样式的切换：箭头方向切换
         // 如果没有：则先移除之前拥有active样式的A标签的active样式 ，同时将之前可能修改箭头方向重置为向下，最后为当前a元素添加active样式
-        if($(this).hasClass("active")){ //有active样式
+        if ($(this).hasClass("active")) { //有active样式
             // 找到当前被点击的a元素的子元素span，进行样式的切换--就是箭头方向的切换
             $(this).find("span").toggleClass("fa-angle-down fa-angle-up");
-        }else{ //没有active样式
+        } else { //没有active样式
             // 找到兄弟元素中拥有active样式的a元素，找到它的子元素span,将span的样式重置箭头方向向下
-            if(!$(this).siblings(".active")){
-                $(this).siblings(".active").find("span")[0].className="fa fa-angle-down";
-            }
+            // if ($(this).siblings(".active")) {
+            // 只是选择到了所有兄弟元素的第一个
+            // $(this).siblings().find("span")[0].className = "fa fa-angle-down";
+
+            $(this).siblings().find("span").attr("class","fa fa-angle-down");
+
+            // $(this).siblings().find("span").removeClass().addClass("fa fa-angle-down");
+
+
+            // }
             // 清除所有兄弟元素的active样式
             $(this).siblings().removeClass("active");
             // 为当前被点击的a元素添加active样式
@@ -117,7 +129,7 @@ $(function(){
         // 获取排序字段
         var key = $(this).data("order");
         // 获取排序方式--升序还是降序
-        var orderType = $(this).find("span").hasClass("fa-angle-down")?2:1;
+        var orderType = $(this).find("span").hasClass("fa-angle-down") ? 2 : 1;
         // 将排序参数添加到原始参数中
         data[key] = orderType;
         // 重新加载数据

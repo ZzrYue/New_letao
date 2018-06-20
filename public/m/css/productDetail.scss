@@ -1,0 +1,52 @@
+.lt_main{
+    .lt-proName{
+        font-size: 18px;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+    .lt_price{
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+        > span {
+            color: red;
+            font-size: 30px;
+        }
+    }
+    .lt_size{
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+        > span{
+            width: 25px;
+            height: 25px;
+            display: inline-block;
+            margin-left: 10px;
+            font-size: 13px;
+            text-align: center;
+            line-height: 25px;
+            border:1px solid #ccc;
+            margin-top: 10px;
+            &.active{
+                background-color: #ff0;
+            }
+        }
+    }
+    .lt_num{
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+}
+.layout .lt_footer{
+    padding-top: 4px;
+    padding-right: 10px;
+    box-sizing: border-box;
+    background-color: #ddd;
+    .fa{
+        font-size: 25px;
+        margin: 10px;
+    }
+    button{
+        float: right;
+        padding: 8px 25px;
+        margin-left: 10px;
+    }
+}

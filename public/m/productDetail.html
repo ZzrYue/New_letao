@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 字体图标样式文件 -->
+    <link rel="stylesheet" href="./assets/fa/css/font-awesome.css">
+    <!-- mui样式文件 -->
+    <link rel="stylesheet" href="./assets/mui/css/mui.css">
+    <!-- 公共样式文件 -->
+    <link rel="stylesheet" href="./css/common.css">
+    <!-- 当前页样式文件 -->
+    <link rel="stylesheet" href="./css/productDetail.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="layout">
+        <div class="lt_header">
+            <a href="javascript:history.back()" class="lt_hleft  fa fa-arrow-left"></a>
+            <div class="lt_hcenter">商品详情</div>
+            <a href="./letao_index.html" class="lt_hright fa fa-home"></a>
+        </div>
+        <div class="lt_main">
+            <!-- 同志们，这个lt_parent的作用就是用来限制mui-scroll-wrapper的高度范围 -->
+            <div class="lt_parent">
+                <div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+                    <div class="mui-scroll lt_proBox" style="background-color: #fff;">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lt_footer">
+            <span class="fa fa-shopping-cart"></span>
+            <button class="mui-btn mui-btn-blue">立刻购买</button>
+            <button class="mui-btn mui-btn-red btn-addCart">加入购物车</button>
+        </div>
+    </div>
+<script type="text/template" id="lr_proDetailTemp">
+    <!-- 轮播图 -->
+    <div class="mui-slider">
+        <div class="mui-slider-group mui-slider-loop">
+            <!--支持循环，需要重复图片节点-->
+            <div class="mui-slider-item mui-slider-item-duplicate">
+                <a href="#">
+                    <img src="<%= pic[pic.length-1].picAddr%>" />
+                </a>
+            </div>
+            <% for(var i=0;i< pic.length;i++) { %>
+                <div class="mui-slider-item">
+                    <a href="#">
+                        <img src="<%= pic[i].picAddr%>" />
+                    </a>
+                </div>
+            <% }%>
+            <!--支持循环，需要重复图片节点-->
+            <div class="mui-slider-item mui-slider-item-duplicate">
+                <a href="#">
+                    <img src="<%= pic[0].picAddr%>" />
+                </a>
+            </div>
+        </div>
+        <div class="mui-slider-indicator">
+            <% for(var i=0;i<pic.length;i++){ %>
+                <div class="mui-indicator <%=i==0?'mui-active':''%>"></div>
+            <% }%>
+        </div>
+    </div>
+    <div class="lt-proName"><%=proName%></div>
+    <div class="lt_price">
+        价格：
+        <span>&yen;<%=price%></span>
+        <del>&yen;<%=oldPrice%></del>
+    </div>
+    <div class="lt_size">
+        尺码：
+        <% 
+            var numArr = size.split("-");
+            var start = numArr[0];
+            var end = numArr[1];
+            for(var i=start;i<=end;i++){ %>
+                <span class="<%=i==start?'active':''%>"><%=i%></span>
+            <% }
+        %>
+    </div>
+    <div class="lt_num">数量：
+        <div class="mui-numbox" data-numbox-min="1" data-numbox-max="<%=num%>">
+            <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+            <input id="test" class="mui-input-numbox" type="number" value="1">
+            <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+        </div> &nbsp;剩余：<%=num%>件
+    </div>
+</script>
+    <script src="./assets/mui/js/mui.js"></script>
+    <script src="./assets/zepto/zepto.min.js"></script>
+    <script src="./assets/artTemplate/template-native.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/productDetail.js"></script>
+</body>
+
+</html>
