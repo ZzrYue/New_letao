@@ -1,0 +1,52 @@
+.lt_main{
+    #OA_task_2{
+        .mui-media-body{
+            > p {
+                color:#333;
+                clear: both;
+                > span:nth-of-type(1){
+                    float: left;
+                    font-size: 18px;
+                    color: red;
+                }
+                > del{
+                    float: left;
+                    margin-left: 10px;
+                }
+                > span:nth-of-type(2){
+                    margin-right: 30px;
+                    float: right;
+                }
+            }
+            > input{
+                position: absolute;
+                left: 0;
+                bottom: 0;
+            }
+            
+        }
+    }
+}
+
+.lt_size{
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    > span{
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+        margin-left: 10px;
+        font-size: 13px;
+        text-align: center;
+        line-height: 25px;
+        border:1px solid #ccc;
+        margin-top: 10px;
+        &.active{
+            background-color: #ff0;
+        }
+    }
+}
+.lt_num{
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
