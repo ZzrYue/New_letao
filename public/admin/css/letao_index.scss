@@ -71,6 +71,9 @@ a:link,a:hover,a:active,a:visited{
     padding-left: 180px;
     display: flex;
     flex-direction: column;
+    &.fullScreen{
+        padding-left: 0px;
+    }
     > .lt_mheader{
         width: 100%;
         height: 50px;
