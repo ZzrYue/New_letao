@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var a = 1; 
+        function callback() { 
+            console.log(a, this) 
+        } 
+        function fn(c) { 
+            var a = 2 
+            //  函数甲种调用模式
+            // 函数调用模式：函数():this指向window
+            // 方法调用模式：对象.方法():this就是指向当前调用函数的对象
+            // 构造函数调用模式：new Function()
+            // 上下文调用模式：context  函数.call(this)  函数.apply(this),那么方法中的this就是你传入的对象
+            c() ;
+        } 
+
+        fn(callback);
+        
+        name = 'aa';
+        age = 100;
+
+        var obj = {
+            name: 'jack',
+            age: 20,
+            sayHi: function () {
+                console.log(this.name + ":" + this.age);
+            }
+        }
+
+        // obj.sayHi();
+        // var fn = obj.sayHi;
+        // fn();
+
+        var obj2 = {
+            name:"rose",
+            age:18
+        }
+        obj.sayHi.call(obj2);
+
+        // () => {
+
+        // }
+
+    </script>
+</body>
+
+</html>
