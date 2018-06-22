@@ -52,8 +52,15 @@ $(function () {
                             // 因为我们的编辑的数据是来源于编辑按钮，所以修改之后还需要动态的修改按钮中的自定义属性值
                             $(_this).attr("data-size",pa.size);
                             $(_this).attr("data-num",pa.num);
+                            // 为了配合计算总金额获取数据的需要，我们还需要将复选框中的数据进行修改
+                            //  $("li .chk"):是来获取到所有li元素的.chk,而不是当前li元素
+                            // $("li .chk").attr("data-num",pa.num);
+                            // 我们只需要拿到当前li的.chk
+                            $(li).find(".chk").attr("data-num",pa.num);
                         }
                         mui.swipeoutClose(li);
+                        // 重新计算总金额
+                        calculateTotalPrice();
                     }
                 })
                 // 隐藏当前滑动按钮
@@ -73,5 +80,30 @@ $(function () {
         })
     });
 
+    // 计算总金额：单击复选框，判断复选框是否是选中状态，如果是则获取当前商品的数量和价格，计算总金额
+    // 使用事件委托
+    // 重大细节：tap事件是本质是touch的封装，所响应tap事件的时候，当前复选框还没有来得及被选中，所以tap事件中无法获取到当前复选框
+    // 所以，对于 复选框的事件添加change
+    $("#OA_task_2").on("change",".chk",function(){
+        calculateTotalPrice();
+    });
+
+    // 封装方法来计算总金额
+    function calculateTotalPrice(){
+        // 获取当前所有被选中的复选框
+        // :checked 选择器匹配每个已被选中的 input 元素（只用于单选按钮和复选框）
+        console.log($(".chk:checked"));
+        var chks = $(".chk:checked");
+        // 定义变量存储总金额
+        var totalPrice = 0;
+        // 遍历--计算 总金额
+        for(var i=0;i< chks.length;i++){
+            var price = chks[i].dataset["price"];
+            var num = chks[i].dataset["num"];
+            totalPrice = totalPrice + (price * num);
+        }
+        // 展示总金额
+        $(".lt_totalPrice").text(Math.ceil(totalPrice * 100) / 100);
+    }
     
 });

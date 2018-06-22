@@ -35,6 +35,10 @@
                 </div>
             </div>
         </div>
+        <div class="lt_calculate">
+            <p>订单总金额：<span class="lt_totalPrice">200.00</span></p>
+            <button class="mui-btn mui-btn-red">生成订单</button>
+        </div>
         <div class="lt_footer">
             <ul>
                 <li>
@@ -50,7 +54,7 @@
                     </a>
                 </li>
                 <li class="active">
-                    <a href="javascript:;">
+                    <a href="./cart.html">
                         <span class="fa fa-shopping-cart"></span>
                         <p>购物车</p>
                     </a>
@@ -64,7 +68,7 @@
             </ul>
         </div>
     </div>
-    <script type="text/template" id="catListTemp">
+<script type="text/template" id="catListTemp">
     <% for(var i=0;i< list.length;i++){ %>
         <li class="mui-table-view-cell mui-transitioning">
                 <div class="mui-slider-right mui-disabled">
@@ -82,7 +86,7 @@
                                 <span class="lt_editNum">x <%=list[i].num%>双</span>
                             </p>
                             <p class="lt_editSize">鞋码：<%=list[i].size%></p>
-                            <input type="checkbox">
+                            <input type="checkbox" class="chk" data-price="<%=list[i].price%>" data-num="<%=list[i].num%>">
                         </div>
                     </a>
                 </div>
@@ -90,7 +94,7 @@
     <% }%>
 </script>
 <!-- {productsize: "40-50", productnum: "20", size: "40", num: "1"} -->
-    <script type="text/template" id="cartEditTemp">
+<script type="text/template" id="cartEditTemp">
     <div class="lt_size">
         尺码：
         <% 
