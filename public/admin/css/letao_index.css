@@ -71,6 +71,10 @@ a:link, a:hover, a:active, a:visited {
   text-decoration: none;
 }
 
+.lt_left > ul > li > a.active {
+  color: #fff;
+}
+
 .lt_left > ul > li > div {
   padding-left: 40px;
   display: none;

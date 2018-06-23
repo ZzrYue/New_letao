@@ -53,6 +53,9 @@ a:link,a:hover,a:active,a:visited{
                 &:visited{
                     text-decoration: none;
                 }
+                &.active{
+                    color: #fff;
+                }
             }
             > div{
                 padding-left: 40px;
