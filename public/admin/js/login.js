@@ -2,6 +2,7 @@ $(function(){
     // 单击登陆实现登陆操作
     $("[type=submit]").on("click",function(e){
         e.preventDefault();
+        
         // 获取用户数据
         var name = $("#inputName").val();
         var pass = $("#inputPassword").val();

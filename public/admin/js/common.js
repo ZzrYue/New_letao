@@ -48,23 +48,26 @@ $(function () {
         });
     })();
     // 退出功能
-    // 1.退出功能应该是一公用功能，不是属于某个页面特有的功能
-    // 2.功能实现方式：使用bootstrap的默认提供的插件 --模态框 来实现
-    // 2.1：模态框结构在那里创建？
-    // 2.1.1：有同学说放在模板中？模板在那里创建？
-    // a.不能在js文件中直接创建script标签生成模板结构，因为语法不允许
-    // b.也不能放在某个具体的页面结构中，因为这个页面中的模板只有它引入的js才能使用
-    // c.创建一个新的html文件，添加模板  -- 然并卵
+  
     // 2.2：如何实现退出功能--调用接口
     $(".glyphicon-log-out").on("click", function () {
         // 展示模态框
         $("#myExitModal").modal("show");
     });
 
+    
+
     // 分类导航项的展示和合并
     $(".lt_cate").on("click",function(){
         $(".lt_subCate").slideToggle();
+        console.log($(this))
         $(this).parent().siblings().find("a").removeClass("active");
         $(this).addClass("active");
     });
+
+
+    //点击左侧导航的时候，让当前点击的有current样式，其他的没有这样式
+    $(".li").on("click",function(){
+        console.log($(this))
+    })
 });

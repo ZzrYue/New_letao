@@ -1,0 +1,16 @@
+.lt_main .lt_content {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.lt_main .lt_content > table {
+  width: 100%;
+}
+
+.lt_main .lt_content > table th, .lt_main .lt_content > table td {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  line-height: 50px;
+  text-align: center;
+}
+/*# sourceMappingURL=userManager.css.map */

@@ -1,0 +1,42 @@
+.lt_main .lt_mpath .breadcrumb {
+  margin-bottom: 0;
+}
+
+.lt_main .lt_content {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  padding-top: 0;
+  position: relative;
+}
+
+.lt_main .lt_content .btn-primary {
+  position: absolute;
+  left: 20px;
+  top: -12px;
+}
+
+.lt_main .lt_content > table {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.lt_main .lt_content > table th, .lt_main .lt_content > table td {
+  width: 50%;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  line-height: 50px;
+  text-align: center;
+}
+
+.lt_main .lt_content > table th > td, .lt_main .lt_content > table th th, .lt_main .lt_content > table td > td, .lt_main .lt_content > table td th {
+  width: 100%;
+}
+
+.lt_main .lt_content #paginator {
+  margin-top: -40px;
+}
+
+.alert-danger {
+  padding: 5px;
+}
+/*# sourceMappingURL=firstCategoryManager.css.map */

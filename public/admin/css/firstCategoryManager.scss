@@ -1,0 +1,38 @@
+.lt_main{
+    .lt_mpath{
+        .breadcrumb{
+            margin-bottom:0;
+        }
+    }
+    .lt_content{
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        padding-top:0;
+        position: relative;
+        .btn-primary{
+            position: absolute;
+            left:20px;
+            top:-12px;
+        }
+        >table{
+            width: 100%; 
+            margin-top:30px;          
+            th,td{
+                width: 50%;
+                border:1px solid #ccc;
+                border-collapse: collapse;
+                line-height: 50px;
+                text-align: center;
+                >td,th{
+                    width: 100%;
+                }
+            }
+        }
+        #paginator{
+            margin-top:-40px;
+        }
+    }
+}
+.alert-danger{
+    padding:5px;
+}

@@ -1,58 +1,43 @@
-.layout .lt_main {
+.lt_main {
   padding-bottom: 75px;
 }
 
-.layout .lt_main #OA_task_2 .mui-media-body > p {
-  color: #333;
-  clear: both;
+.lt_main > .lt_parent #OA_task_2 .mui-media-body {
+  font-size: 13px;
 }
 
-.layout .lt_main #OA_task_2 .mui-media-body > p > span:nth-of-type(1) {
-  float: left;
+.lt_main > .lt_parent #OA_task_2 .mui-media-body a {
+  color: inherit;
+}
+
+.lt_main > .lt_parent #OA_task_2 .mui-media-body a .cart_price b {
   font-size: 18px;
-  color: red;
+  color: #f00;
 }
 
-.layout .lt_main #OA_task_2 .mui-media-body > p > del {
-  float: left;
-  margin-left: 10px;
-}
-
-.layout .lt_main #OA_task_2 .mui-media-body > p > span:nth-of-type(2) {
-  margin-right: 30px;
+.lt_main > .lt_parent #OA_task_2 .mui-media-body a .cart_price span {
   float: right;
+  margin-right: 30px;
 }
 
-.layout .lt_main #OA_task_2 .mui-media-body > input {
+.lt_main > .lt_parent #OA_task_2 .mui-media-body a input {
   position: absolute;
   left: 0;
   bottom: 0;
 }
 
-.lt_size {
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-}
-
-.lt_size > span {
-  width: 25px;
-  height: 25px;
+.proSize span {
   display: inline-block;
-  margin-left: 10px;
-  font-size: 13px;
-  text-align: center;
-  line-height: 25px;
+  width: 30px;
+  height: 30px;
   border: 1px solid #ccc;
-  margin-top: 10px;
+  line-height: 30px;
+  text-align: center;
+  margin-top: 5px;
 }
 
-.lt_size > span.active {
+.proSize span.active {
   background-color: #ff0;
-}
-
-.lt_num {
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
 }
 
 .lt_calculate {

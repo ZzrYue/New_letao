@@ -11,6 +11,7 @@ html, body {
 
 a:link, a:hover, a:active, a:visited {
   text-decoration: none;
+  color: #888;
 }
 
 .lt_left {
@@ -59,6 +60,14 @@ a:link, a:hover, a:active, a:visited {
   line-height: 30px;
 }
 
+.lt_left > ul > li.current {
+  color: #fff;
+}
+
+.lt_left > ul > li.current > a {
+  color: inherit;
+}
+
 .lt_left > ul > li > a {
   color: #888;
 }
@@ -83,6 +92,11 @@ a:link, a:hover, a:active, a:visited {
 .lt_left > ul > li > div a {
   color: #888;
   display: block;
+}
+
+.lt_left > ul > li:hover > a {
+  color: #fff;
+  font-size: 16px;
 }
 
 .lt_main {

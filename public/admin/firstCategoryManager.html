@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="./css/letao_index.css">
-    <link rel="stylesheet" href="./css/userManager.css">
+    <link rel="stylesheet" href="./css/firstCategoryManager.css">
     <title>Document</title>
 </head>
 
@@ -38,10 +38,12 @@
         </ul>
     </div>
     <div class="lt_main">
+        
         <div class="lt_mheader">
             <span class="glyphicon glyphicon-align-justify"></span>
             <span class="glyphicon glyphicon-log-out"></span>
         </div>
+
         <div class="lt_mpath">
             <ol class="breadcrumb">
                 <li>
@@ -51,62 +53,42 @@
             </ol>
         </div>
         <div class="lt_content">
-            <table class="container" >
-                <thead>
+
+            <button type="button" class="btn btn-primary addCategory">添加一级分类</button>
+
+            <table class="container">
+                <thead class="row">
                     <tr>
                         <th>编号</th>
-                        <th>用户名</th>
-                        <th>手机</th>
-                        <th>状态</th>
-                        <th>操作</th>
+                        <th>名称</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                 </tbody>
             </table>
             <ul class="paginator" id="paginator"></ul>
         </div>
     </div>
 
-    <!-- 模态框 -->
-    <div class="modal fade userManagerModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title">Modal title</h4>
-            </div>
-            <div class="modal-body">
-              <p>是否确认您的操作&hellip;</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-              <button type="button" class="btn btn-primary userManagerModalBtn">确认</button>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- 模板 -->
-    <script type="text/template" id="userListTemp">
+
+    <!-- 模板 -->
+    <script type="text/template" id="firstCateListTemp">
         <%for(var i=0;i<rows.length;i++){%>
             <tr data-id="<%=rows[i].id%>">
                 <td><%=(page-1)*size+1+i%></td>
-                <td><%=rows[i].username%></td>
-                <td><%=rows[i].mobile%></td>
-                <td class="userStatus"><%=rows[i].isDelete == 1?"已禁用":"已启用"%></td>
-                <td><button type="button" class="btn <%=rows[i].isDelete == 1?"btn-info":"btn-danger"%>"><%=rows[i].isDelete == 1?"启用":"禁用"%></button></td>
+                <td><%=rows[i].categoryName%></td>
             </tr>
         <%}%>
     </script>
     <script src="./assets/jquery/jquery.min.js"></script>
     <script src="./assets/bootstrap/js/bootstrap.js"></script>
     <script src="./assets/echarts/echarts.min.js"></script>
-    <script src="./assets/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+    <script src="./assets/bootstrap-paginator/bootstrap-paginator.js"></script>
     <script src="./assets/artTemplate/template-native.js"></script>
     <script src="./js/common.js"></script>
-    <script src="./js/userManager.js"></script>
+    <script src="./js/firstCategoryManager.js"></script>
 </body>
 
 </html>
