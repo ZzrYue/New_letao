@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="./css/letao_index.css">
+    <link rel="stylesheet" href="./css/secondCategoryManager.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="lt_left">
+        <a href="letao_index.html">ITCAST</a>
+        <div>
+            <img src="./images/default.png" alt="">
+            <span>超级管理员</span>
+        </div>
+        <ul>
+            <li>
+                <a href="./userManager.html">
+                    <span class="glyphicon glyphicon-user"></span>用户管理</a>
+            </li>
+            <li>
+                <a href="javascript:;" class="lt_cate">
+                    <span class="glyphicon glyphicon-list"></span>分类管理</a>
+                <div class="lt_subCate">
+                    <a href="./firstCategoryManager.html">一级分类</a>
+                    <a href="./secondCategoryManager.html">二级分类</a>
+                </div>
+            </li>
+            <li>
+                <a href="./productManager.html">
+                    <span class="glyphicon glyphicon-tags"></span>产品管理</a>
+            </li>
+        </ul>
+    </div>
+    <div class="lt_main">
+
+        <div class="lt_mheader">
+            <span class="glyphicon glyphicon-align-justify"></span>
+            <span class="glyphicon glyphicon-log-out"></span>
+        </div>
+
+        <div class="lt_mpath">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="#">管理系统</a>
+                </li>
+                <li class="active">分类管理</li>
+            </ol>
+        </div>
+        <div class="lt_content">
+
+            <button type="button" class="btn btn-primary addBrandBtn">添加品牌</button>
+
+            <table class="container">
+                <thead class="row">
+                    <tr>
+                        <th>编号</th>
+                        <th>品牌名称</th>
+                        <th>品牌logo</th>
+                        <th>所属分类</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            <ul class="paginator" id="paginator"></ul>
+        </div>
+    </div>
+    <!-- 模态框 -->
+    <div class="modal fade brandModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">添加品牌</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="true">
+                                <span class="firstCategoryName">请选择分类:</span>
+                                <span class="caret"></span>
+                                <!-- 下面这个input的作用就是用来存储一级分类id号，以便 我们在保存的时候能够方便的使用serialize方法获取到所有参数 -->
+                                <input type="hidden" name="categoryId">
+                            </button>
+                            <ul class="dropdown-menu firstCategory" aria-labelledby="dropdownMenu1">
+
+                            </ul>
+                        </div>
+
+                        <input type="text" class="form-control" placeholder="请输入品牌名" name="brandName" style="margin:10px 0">
+
+                        <div class="fileUpload" style="position:relative;margin-bottom: 10px;">
+                            <button class="btn btn-default" style="padding:6px 95px;">请选择上传文件</button>
+                            <input id="fileupload" style="position:absolute;top:0;left:60px;opacity:0;" type="file" name="pic1" data-url="/category/addSecondCategoryPic"
+                                multiple>
+                            <!-- <input class="btn btn-default" type="file" style="position:absolute;top:0;left:60px;opacity:0;" > -->
+
+                        </div>
+
+                        <img class="secondcateImg" src="./images/default.png" alt="" width="100px">
+                        <input type="hidden" name="brandLogo">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary brandModalBtn">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/template" id="secondCategoryListTemp">
+        {{each rows as value index}}
+            <tr>
+                <td>{{(page - 1)*size + 1 + index}}</td>
+                <td>{{rows[index].brandName}}</td>
+                <td><img src="{{rows[index].brandLogo}}" alt="" width="100px"></td>
+                <td>{{rows[index].categoryName}}</td>
+            </tr>
+        {{/each}}
+    </script>
+
+
+    <script src="./assets/jquery/jquery.min.js"></script>
+    <script src="./assets/bootstrap/js/bootstrap.js"></script>
+    <script src="./assets/echarts/echarts.min.js"></script>
+    <script src="./assets/bootstrap-paginator/bootstrap-paginator.js"></script>
+    <script src="./assets/artTemplate/template.js"></script>
+    <!-- 上传文件插件的引入 -->
+    <script src="./assets/jquery-fileupload/jquery.ui.widget.js"></script>
+    <script src="./assets/jquery-fileupload/jquery.fileupload.js"></script>
+    <script src="./assets/jquery-fileupload/jquery.iframe-transport.js"></script>
+
+    <!-- 公共js文件 -->
+    <script src="./js/common.js"></script>
+    <!-- 当前页面效果的js文件 -->
+    <script src="./js/secondCategoryManager.js"></script>
+
+
+</body>
+
+</html>

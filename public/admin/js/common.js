@@ -60,14 +60,10 @@ $(function () {
     // 分类导航项的展示和合并
     $(".lt_cate").on("click",function(){
         $(".lt_subCate").slideToggle();
-        console.log($(this))
+        // console.log($(this))
         $(this).parent().siblings().find("a").removeClass("active");
         $(this).addClass("active");
     });
 
 
-    //点击左侧导航的时候，让当前点击的有current样式，其他的没有这样式
-    $(".li").on("click",function(){
-        console.log($(this))
-    })
 });

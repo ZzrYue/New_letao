@@ -61,12 +61,12 @@ $(function(){
       </div>`
     
       $("html body").append(firstCate);
-      console.log(333)
+    //   console.log(333)
     })();
 
     // 点击添加按钮出现模态框
     $(".addCategory").on("click",function(){
-        console.log(444)
+        // console.log(444)
         $(".firstCateModal").modal("show");
     })
 
